@@ -26,11 +26,14 @@ package nl.jorisdormans.phantomextra.graphics
 		private var framesX:int;
 		private var framesY:int;
 		
-		public function PhantomSprite( img:Class, width:int, height:int )
+		public function PhantomSprite( img:Class, width:int = 0, height:int = 0 )
 		{
 			var inst:Bitmap = new img();
 			
 			//this.data = inst.bitmapData;
+			
+			if (width == 0) width = inst.width;
+			if (height == 0) height = inst.height;
 			
 			this._width = width;
 			this._height = height;
