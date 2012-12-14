@@ -109,7 +109,9 @@ package nl.jorisdormans.phantomextra.tweening
 		override public function getProperty(property:String, data:Object = null, componentClass:Class = null):Object 
 		{
 			if (property == P_IS_TWEENING) {
-				if (current != target) return true;
+				if (current != target && !paused) {
+					return true;
+				}
 				else return null;
 			}
 			return super.getProperty(property, data, componentClass);
@@ -136,6 +138,7 @@ package nl.jorisdormans.phantomextra.tweening
 					target = 1;
 					current = 0;
 					paused = false;
+					trace("STARTED");
 					return Phantom.MESSAGE_HANDLED;
 				case M_PAUSE:
 					paused = true;
